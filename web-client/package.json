@@ -19,6 +19,7 @@
     "vuex-class": "^0.3.2"
   },
   "devDependencies": {
+    "@mdi/font": "^3.7.95",
     "@types/jest": "^23.1.4",
     "@typescript-eslint/eslint-plugin": "^1.11.0",
     "@typescript-eslint/parser": "^1.11.0",

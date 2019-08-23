@@ -1,16 +1,80 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">
-        Home
-      </router-link> |
-      <router-link to="/about">
-        About
-      </router-link>
-    </div>
-    <router-view />
+    <v-app>
+      <v-navigation-drawer
+        v-model="drawer"
+        clipped
+        app
+      >
+        <v-toolbar
+          dense
+          dark
+          color="primary"
+        >
+          <v-toolbar-side-icon @click.stop="drawer = !drawer" />
+          <v-toolbar-title>{{ title }}</v-toolbar-title>
+        </v-toolbar>
+        <v-list>
+          <v-list-tile
+            v-for="item in items"
+            :key="item.title"
+            :to="item.route"
+          >
+            <v-list-tile-content>
+              <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </v-list>
+      </v-navigation-drawer>
+
+      <v-toolbar
+        dense
+        dark
+        color="primary"
+      >
+        <v-toolbar-side-icon @click.stop="drawer = !drawer" />
+        <v-toolbar-title>{{ title }}</v-toolbar-title>
+        <v-spacer />
+        <v-toolbar-title>{{ routerTitle }}</v-toolbar-title>
+        <v-spacer />
+
+      </v-toolbar>
+      <v-content>
+        <v-container fluid>
+          <router-view />
+        </v-container>
+      </v-content>
+    </v-app>
   </div>
 </template>
+
+<script lang="ts">
+import Vue from 'vue'
+import Component from 'vue-class-component'
+import Login from '@/components/Login.vue'
+import Router from '@/router'
+
+@Component({ })
+export default class App extends Vue {
+
+  private title: string = 'WebClient Template';
+  private routerTitle: string = '';
+  private drawer = null;
+
+  private items = [
+    { title: 'Home', route: '/' },
+    { title: 'Tables', route: '/tables' },
+    { title: 'About', route: '/about' }
+  ];
+
+  private created () {
+    this.routerTitle = Router.currentRoute.meta.title || ''
+    Router.afterEach((to) => {
+      this.routerTitle = to.meta.title || ''
+    })
+  }
+}
+</script>
 
 <style>
 #app {
@@ -23,12 +87,10 @@
 #nav {
   padding: 30px;
 }
-
 #nav a {
   font-weight: bold;
   color: #2c3e50;
 }
-
 #nav a.router-link-exact-active {
   color: #42b983;
 }
