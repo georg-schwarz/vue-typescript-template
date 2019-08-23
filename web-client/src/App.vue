@@ -37,7 +37,6 @@
         <v-spacer />
         <v-toolbar-title>{{ routerTitle }}</v-toolbar-title>
         <v-spacer />
-
       </v-toolbar>
       <v-content>
         <v-container fluid>
@@ -51,14 +50,14 @@
 <script lang="ts">
 import Vue from 'vue'
 import Component from 'vue-class-component'
-import Login from '@/components/Login.vue'
 import Router from '@/router'
 
 @Component({ })
 export default class App extends Vue {
-
   private title: string = 'WebClient Template';
+
   private routerTitle: string = '';
+
   private drawer = null;
 
   private items = [
