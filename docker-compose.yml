@@ -8,12 +8,12 @@ services:
       context: ./web-client/
     # image: link to the published image
       args:
-        BASE_URL: /ui
+        BASE_URL: /
         SERVER_URL: /test
         
     labels: # traefic reverse-proxy config
       - "traefik.backend=ui"
-      - "traefik.frontend.rule=PathPrefixStrip:/ui"
+      - "traefik.frontend.rule=PathPrefixStrip:/"
       - "traefik.frontend.passHostHeader=true"
       - "traefik.port=8080"
 

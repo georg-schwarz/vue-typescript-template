@@ -1,6 +1,6 @@
 # web-client
 
-When starting locally with `npm run serve`, the application is available on `localhost:8080/ui`.
+When starting locally with `npm run serve`, the application is available on `localhost:8080/`.
 
 ## Project setup
 ```
