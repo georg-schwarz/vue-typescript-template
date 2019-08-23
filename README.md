@@ -6,3 +6,5 @@ This project represents the state of **my personal** Vue.js template with TypeSc
 
 * **Vue.js** as UI framework
 * **Vuex** for easy state management in Redux style
+* **Vuex-Class** for vuex store via annotations
+* **Vuetify** for Material UI design elements
