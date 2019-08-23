@@ -1,28 +1,32 @@
 module.exports = {
-  root: true,
-  env: {
-    node: true
+  "env": {
+    "browser": true,
+    "es6": true
   },
-  'extends': [
-    'plugin:vue/essential',
-    '@vue/standard',
-    '@vue/typescript'
+
+  "extends": [
+    "standard",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:vue/recommended",
+    "@vue/typescript"
   ],
-  rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
   },
-  parserOptions: {
-    parser: '@typescript-eslint/parser'
+  "parser": "vue-eslint-parser",
+  "parserOptions": {
+    "parser": "@typescript-eslint/parser",
+    "ecmaVersion": 2018,
+    "sourceType": "module"
   },
-  overrides: [
-    {
-      files: [
-        '**/__tests__/*.{j,t}s?(x)'
-      ],
-      env: {
-        jest: true
-      }
-    }
-  ]
+  "plugins": [
+    "vue",
+    "@typescript-eslint"
+  ],
+  "rules": {
+    "@typescript-eslint/indent": [2, 2],
+    "max-len": [2, 120, 4, { "ignoreUrls": true }],
+    "@typescript-eslint/explicit-function-return-type": [1, {"allowExpressions": true}]
+  }
 }
