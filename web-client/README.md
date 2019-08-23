@@ -1,5 +1,7 @@
 # web-client
 
+When starting locally with `npm run serve`, the application is available on `localhost:8080/ui`.
+
 ## Project setup
 ```
 npm install
@@ -30,5 +32,3 @@ npm run lint
 npm run test:unit
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

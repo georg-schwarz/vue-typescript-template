@@ -1,0 +1,30 @@
+version: '3.7'
+
+services:
+
+  # WEB-CLIENT (:9000/ui) --------------------
+  ui-service:
+    build:
+      context: ./web-client/
+    # image: link to the published image
+      args:
+        BASE_URL: /ui
+        SERVER_URL: /test
+        
+    labels: # traefic reverse-proxy config
+      - "traefik.backend=ui"
+      - "traefik.frontend.rule=PathPrefixStrip:/ui"
+      - "traefik.frontend.passHostHeader=true"
+      - "traefik.port=8080"
+
+  # REVERSE PROXY (PORT 9000)
+  edge-server:
+    image: traefik # The official Traefik docker image
+    command: --api --docker # Enables the web UI and tells Traefik to listen to docker
+    ports:
+      - "9000:80"     # The HTTP port
+      - "9001:8080"   # The Web UI (enabled by --api)
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock # So that Traefik can listen to the Docker events
+    labels:
+        - "traefik.enable=false"
