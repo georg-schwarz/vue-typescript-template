@@ -1,15 +1,8 @@
 import Vue from 'vue'
-import Vuetify from 'vuetify'
 import Vuex from 'vuex'
 import App from './App.vue'
 import router from './router'
-
-import 'vuetify/dist/vuetify.min.css'
-import '@mdi/font/css/materialdesignicons.css'
-
-Vue.use(Vuetify, {
-  iconfont: 'mdi'
-})
+import vuetify from './plugins/vuetify'
 
 Vue.use(Vuex)
 
@@ -22,6 +15,7 @@ const store = new Vuex.Store({
 })
 
 new Vue({
+  vuetify,
   router,
   store,
   render: h => h(App)
